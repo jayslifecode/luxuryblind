@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import Image from "next/image";
 
 export default function HomeScreenFeatured() {
     const featuredProjects = [
@@ -46,7 +47,8 @@ export default function HomeScreenFeatured() {
                         {featuredProjects.map((project) => (
                             <CarouselItem key={project.title}>
                                 <Card className="overflow-hidden">
-                                    <img
+                                    <Image
+                                        fill
                                         src={project.image}
                                         alt={project.title}
                                         className="w-full h-64 object-cover"
@@ -77,9 +79,10 @@ export default function HomeScreenFeatured() {
                                                     <DialogTitle>{project.title}</DialogTitle>
                                                     <DialogDescription>{project.location}</DialogDescription>
                                                 </DialogHeader>
-                                                <img
+                                                <Image
                                                     src={project.image}
                                                     alt={project.title}
+                                                    fill
                                                     className="w-full h-64 object-cover rounded-md my-4"
                                                 />
                                                 <p className="text-muted-foreground">{project.description}</p>

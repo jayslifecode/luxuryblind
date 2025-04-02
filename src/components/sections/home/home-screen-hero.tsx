@@ -2,12 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function HomeScreenHero() {
     return (
         <section className="relative h-96 md:h-screen max-h-[800px] overflow-hidden">
             <div className="absolute inset-0 bg-black/50 z-10">
-                <img
+                <Image
+                    fill
                     src="/hero-background.jpeg"
                     alt="Тансаг хөшигтэй үзэсгэлэнтэй цонх"
                     className="w-full h-full object-cover mix-blend-overlay"

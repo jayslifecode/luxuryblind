@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function ContactScreenHero() {
     return (
         <section className="relative h-64 overflow-hidden">
             <div className="absolute inset-0 bg-black/60">
-                <img
+                <Image
                     src="/api/placeholder/1920/400"
                     alt="Бидэнтэй холбогдох"
+                    fill
                     className="w-full h-full object-cover mix-blend-overlay"
                 />
             </div>

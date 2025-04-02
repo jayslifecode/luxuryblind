@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function AboutTeamSection() {
     const teamMembers = [
@@ -53,7 +54,7 @@ export default function AboutTeamSection() {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
                             <Card className="h-full overflow-hidden">
-                                <img src={member.image} alt={member.name} className="w-full h-64 object-cover" />
+                                <Image src={member.image} alt={member.name} className="w-full h-64 object-cover" fill />
                                 <CardHeader>
                                     <CardTitle>{member.name}</CardTitle>
                                     <CardDescription className="text-accent">{member.position}</CardDescription>

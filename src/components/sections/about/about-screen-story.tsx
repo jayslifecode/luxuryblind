@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function AboutOurStorySection() {
     return (
@@ -38,10 +39,11 @@ export default function AboutOurStorySection() {
                         transition={{ duration: 0.8 }}
                         className="rounded-xl overflow-hidden shadow-lg"
                     >
-                        <img
+                        <Image
                             src="/api/placeholder/600/400"
                             alt="Манай үзэсгэлэнгийн танхим"
                             className="w-full h-full object-cover"
+                            fill
                         />
                     </motion.div>
                 </div>

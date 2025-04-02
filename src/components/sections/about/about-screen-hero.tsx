@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function AboutScreenHero() {
     return (
         <section className="relative h-80 overflow-hidden">
             <div className="absolute inset-0 bg-black/60">
-                <img
+                <Image
                     src="/api/placeholder/1920/600"
                     alt="Манай багийн ажиллаж буй мөч"
                     className="w-full h-full object-cover mix-blend-overlay"
+                    fill
                 />
             </div>
             <div className="container mx-auto px-4 relative h-full flex flex-col justify-center">

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { CheckCircle } from "lucide-react";
+import Image from "next/image";
 
 export default function AboutScreenCertification() {
     const certifications = [
@@ -68,9 +69,10 @@ export default function AboutScreenCertification() {
                     >
                         {[1, 2, 3, 4].map((item) => (
                             <div key={item} className="bg-muted dark:bg-muted rounded-lg p-6 flex items-center justify-center h-36">
-                                <img
+                                <Image
                                     src={`/api/placeholder/150/80`}
                                     alt={`Гэрчилгээний Лого ${item}`}
+                                    fill
                                     className="max-w-full max-h-full"
                                 />
                             </div>
