@@ -30,7 +30,7 @@ export default function RootLayout({
         <Button
           variant="icon"
           onClick={() => setIsDark(!isDark)}
-          className="fixed bottom-4 right-4"
+          className="fixed bottom-4 right-4 z-100"
         >
           {isDark ? <Icon icon="line-md:moon" width="32" height="32" /> : <Icon icon="line-md:sun-rising-loop" width="32" height="32" />}
         </Button>
