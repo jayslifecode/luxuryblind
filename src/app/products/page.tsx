@@ -1,7 +1,7 @@
+import ProductListView from "@/components/sections/product/view/product-screen-view";
+
 export default function Products() {
     return (
-        <section>
-            <h1>Products</h1>
-        </section>
+        <ProductListView />
     );
 }
