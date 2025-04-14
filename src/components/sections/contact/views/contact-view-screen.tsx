@@ -1,5 +1,3 @@
-"use client";
-
 import ContactEmergencyServiceSection from "../contact-screen-emergency";
 import ContactFaqSection from "../contact-screen-faq";
 import ContactFormMapSection from "../contact-screen-form-map";
