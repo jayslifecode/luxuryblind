@@ -1,4 +1,3 @@
-// components/Header.jsx
 "use client";
 
 import { useState } from "react";
@@ -7,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { Logo } from "@/assets/icon";
 
 export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -33,12 +32,12 @@ export default function Header() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-background dark:bg-primary text-primary dark:text-primary-foreground py-4 sticky top-0 z-10 border-b dark:border-border shadow-sm"
+            className="bg-background dark:bg-primary text-primary dark:text-primary-foreground py-4 sticky top-0 z-10 border-b dark:border-border shadow-sm z-20"
         >
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center">
                     <Link href="/" className="text-2xl font-bold">
-                        <Image src="/logo.png" alt="Лого" width={150} height={40} />
+                        <Logo />
                     </Link>
 
                     <nav className="hidden md:block">
@@ -48,11 +47,12 @@ export default function Header() {
                                     key={item.name}
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ duration: 0.2 }}
+                                    className="font-thin"
                                 >
                                     <Link
                                         href={item.path}
                                         className={`transition-colors ${isActive(item.path)
-                                            ? 'text-accent font-medium'
+                                            ? 'text-accent font-thin'
                                             : 'hover:text-accent'}`}
                                     >
                                         {item.name}
