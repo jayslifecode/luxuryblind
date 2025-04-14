@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function HomeScreenHero() {
     return (
-        <section className="relative h-96 md:h-screen max-h-[800px] overflow-hidden">
+        <section className="relative h-128 md:h-screen max-h-[800px] overflow-hidden">
             <div className="absolute inset-0 bg-black/50 z-10">
                 <Image
                     fill

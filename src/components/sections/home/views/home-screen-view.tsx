@@ -1,5 +1,3 @@
-"use client";
-
 import HomeScreenHero from "../home-screen-hero";
 import HomeScreenBenefits from "../home-screen-benefits";
 import HomeScreenFeatured from "../home-screen-featured";
