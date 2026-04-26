@@ -1,81 +1,82 @@
-import { Star } from "lucide-react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+"use client";
+
+import { motion } from "motion/react";
+import Image from "next/image";
+import { useLanguage } from "@/lib/context/language-context";
+import { Eyebrow } from "@/components/ui/eyebrow";
+
+const testimonials = [
+  {
+    name: "Б. Нарантуяа",
+    role: "Гэрийн захиалагч",
+    text: "Маш чанартай, үнэ нь боломжийн. Хоёр өрөөний цонхыг нэг долоо хоногт дуусгасан.",
+    image: "/images/projects/oyutolgoi/9A0DE112-8657-418A-911F-29FC70FE4F69.JPG",
+  },
+  {
+    name: "Г. Баяртөгс",
+    role: "Оффис захиалагч",
+    text: "Оюу Толгойн оффисын хөшгийг захиалсан. Чанар болон хурд нь маш сайн байсан.",
+    image: "/images/projects/oyutolgoi/9CF6FE36-AFED-4468-A272-B60DB7AD76DE.JPG",
+  },
+  {
+    name: "Д. Энхтуяа",
+    role: "Орон сууцны захиалагч",
+    text: "Canvas visualizer дээр хэрхэн харагдахыг урьдчилан харсан нь их тустай байсан.",
+    image: "/images/projects/oyutolgoi/AFCEBEAD-7B71-4FBF-BD02-1E039CB3BF09.JPG",
+  },
+];
+
+function StarRow() {
+  return (
+    <div className="flex gap-0.5">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg key={i} className="w-3.5 h-3.5 fill-lb-gold" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
 
 export default function HomeScreenTestimonials() {
-    const testimonials = [
-        {
-            name: "Sarah Johnson",
-            role: "Гэрийн Эзэн",
-            content: "Хөшиг болон суурилуулалтын үйлчилгээний чанар гайхалтай байсан. Багийнхан мэргэжлийн, үр дүнтэй ажиллаж, манай гэрийг цэвэрхэн үлдээсэн. Бид үр дүндээ маш их баяртай байна.",
-        },
-        {
-            name: "Michael Rodriguez",
-            role: "Оффисын Менежер",
-            content: "Luxury Blinds-тай оффисын шинэчлэлд хамтран ажиллахад амар байсан. Автомат хөшигнүүд бидний эрчим хүчний зардлыг мэдэгдэхүйц бууруулж, ажилчдын тав тухыг сайжруулсан.",
-        },
-        {
-            name: "Emily Chen",
-            role: "Интерьер Дизайнер",
-            content: "Интерьер дизайнерын хувьд би олон төрлийн нийлүүлэгчидтэй ажилласан ч Luxury Blinds нарийвчлалд анхаарал хандуулж, чанарт тууштай байдгаараа онцгой юм. Одоо тэд миний үйлчлүүлэгчдэд санал болгодог гол сонголт болсон.",
-        },
-    ];
+  const { t } = useLanguage();
 
-    return (
-        <section className="py-16 bg-muted/50 dark:bg-muted/10">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary dark:text-foreground mb-4">
-                        Манай Үйлчлүүлэгчид Юуг Хэлж Байна Вэ
-                    </h2>
-                    <p className="text-muted-foreground dark:text-muted-foreground max-w-2xl mx-auto">
-                        Зөвхөн бидний үгэнд бүү итгэ. Манай сэтгэл хангалуун үйлчлүүлэгчдийн бидний бүтээгдэхүүн,
-                        үйлчилгээний талаарх туршлагыг сонсоорой.
-                    </p>
+  return (
+    <section className="py-20 sm:py-28 bg-lb-bg">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <Eyebrow className="mb-3">{t.testimonials.eyebrow}</Eyebrow>
+          <h2 className="font-display text-3xl sm:text-4xl font-light text-lb-ivory">{t.testimonials.heading}</h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {testimonials.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="group"
+            >
+              {/* Photo */}
+              <div className="relative aspect-[4/3] overflow-hidden rounded-sm mb-5">
+                <Image src={item.image} alt={item.name} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-lb-bg/30" />
+              </div>
+              {/* Card */}
+              <div className="bg-lb-surface border border-lb-border rounded-sm p-5 space-y-3">
+                <StarRow />
+                <p className="font-sans text-sm text-lb-ivory leading-relaxed">&ldquo;{item.text}&rdquo;</p>
+                <div>
+                  <p className="font-sans text-sm font-semibold text-lb-ivory">{item.name}</p>
+                  <p className="font-sans text-xs text-lb-ash">{item.role}</p>
                 </div>
-
-                <Carousel className="w-full max-w-4xl mx-auto">
-                    <CarouselContent>
-                        {testimonials.map((testimonial, index) => (
-                            <CarouselItem key={index}>
-                                <Card className="mx-4">
-                                    <CardHeader>
-                                        <div className="flex mb-4">
-                                            {[1, 2, 3, 4, 5].map((star) => (
-                                                <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
-                                            ))}
-                                        </div>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p className="text-muted-foreground mb-6">
-                                            &quot;{testimonial.content}&quot;
-                                        </p>
-                                        <div className="flex items-center">
-                                            <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mr-3">
-                                                <span className="text-accent font-bold">
-                                                    {testimonial.name.charAt(0)}
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-semibold text-primary dark:text-foreground">
-                                                    {testimonial.name}
-                                                </h4>
-                                                <p className="text-sm text-muted-foreground">
-                                                    {testimonial.role}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <div className="flex justify-center mt-4 gap-2">
-                        <CarouselPrevious />
-                        <CarouselNext />
-                    </div>
-                </Carousel>
-            </div>
-        </section>
-    );
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

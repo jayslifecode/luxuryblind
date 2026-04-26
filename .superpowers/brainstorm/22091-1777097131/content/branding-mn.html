@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxuryBlind — Брэндийн Чиглэл</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0A0A0A;
+      --surface: #141414;
+      --card:    #1C1C1C;
+      --border:  #2A2A2A;
+      --text:    #F5F0EB;
+      --muted:   #888888;
+      --gold:    #C9A96E;
+      --gold-lt: #E2C99A;
+    }
+
+    html, body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 48px 40px 80px;
+    }
+
+    .brand-wordmark {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 42px;
+      letter-spacing: 0.12em;
+      color: var(--text);
+    }
+    .brand-wordmark span { color: var(--gold); }
+    .brand-tagline {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .brand-korea {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 4px 12px;
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .divider { height: 1px; background: var(--border); margin: 36px 0; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    /* ── PALETTE ── */
+    .palette-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .swatch { display: flex; flex-direction: column; gap: 8px; }
+    .swatch-block { width: 96px; height: 72px; border-radius: 4px; border: 1px solid var(--border); }
+    .swatch-name { font-size: 11px; font-weight: 500; color: var(--text); }
+    .swatch-hex  { font-size: 10px; color: var(--muted); font-family: monospace; }
+    .swatch-role { font-size: 10px; color: var(--muted); }
+
+    /* ── TYPOGRAPHY WEIGHTS ── */
+    .weight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .weight-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+    }
+    .weight-font-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .weight-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .weight-row:last-child { border-bottom: none; }
+    .weight-label {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      width: 90px;
+      flex-shrink: 0;
+    }
+    .weight-sample-serif-light    { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:22px; color:var(--text); }
+    .weight-sample-serif-regular  { font-family:'Cormorant Garamond',serif; font-weight:400; font-size:22px; color:var(--text); }
+    .weight-sample-serif-semibold { font-family:'Cormorant Garamond',serif; font-weight:600; font-size:22px; color:var(--text); }
+    .weight-sample-serif-bold     { font-family:'Cormorant Garamond',serif; font-weight:700; font-size:22px; color:var(--text); }
+    .weight-sample-serif-italic   { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:22px; font-style:italic; color:var(--gold-lt); }
+    .weight-sample-sans-thin      { font-family:'Inter',sans-serif; font-weight:200; font-size:15px; color:var(--muted); }
+    .weight-sample-sans-light     { font-family:'Inter',sans-serif; font-weight:300; font-size:15px; color:var(--muted); }
+    .weight-sample-sans-regular   { font-family:'Inter',sans-serif; font-weight:400; font-size:15px; color:var(--text); }
+    .weight-sample-sans-medium    { font-family:'Inter',sans-serif; font-weight:500; font-size:15px; color:var(--text); }
+    .weight-sample-sans-semibold  { font-family:'Inter',sans-serif; font-weight:600; font-size:14px; color:var(--text); letter-spacing:0.08em; }
+    .weight-sample-sans-bold      { font-family:'Inter',sans-serif; font-weight:700; font-size:13px; color:var(--text); letter-spacing:0.12em; text-transform:uppercase; }
+
+    /* ── TYPOGRAPHY IN CONTEXT ── */
+    .type-context {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 32px;
+    }
+    .ctx-eyebrow {
+      font-family:'Inter',sans-serif;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:0.25em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:12px;
+    }
+    .ctx-display {
+      font-family:'Cormorant Garamond',serif;
+      font-weight:300;
+      font-size:48px;
+      line-height:1.05;
+      color:var(--text);
+      margin-bottom:6px;
+    }
+    .ctx-display em { font-style:italic; color:var(--gold-lt); }
+    .ctx-subheading {
+      font-family:'Cormorant Garamond',serif;
+      font-weight:600;
+      font-size:18px;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      color:var(--text);
+      margin: 16px 0 8px;
+    }
+    .ctx-body {
+      font-family:'Inter',sans-serif;
+      font-weight:300;
+      font-size:13px;
+      line-height:1.75;
+      color:var(--muted);
+      max-width: 480px;
+    }
+    .ctx-ui-text {
+      font-family:'Inter',sans-serif;
+      font-weight:500;
+      font-size:11px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--text);
+      margin-top: 16px;
+    }
+    .ctx-price {
+      font-family:'Cormorant Garamond',serif;
+      font-weight:300;
+      font-size:32px;
+      color:var(--gold);
+      margin-top:8px;
+    }
+    .ctx-price-label {
+      font-family:'Inter',sans-serif;
+      font-weight:400;
+      font-size:11px;
+      color:var(--muted);
+      margin-top:2px;
+    }
+    .ctx-btn-row { display:flex; gap:10px; margin-top:20px; }
+    .ctx-btn-primary {
+      padding:9px 22px;
+      background:var(--gold);
+      color:#0A0A0A;
+      font-family:'Inter',sans-serif;
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      border-radius:2px;
+    }
+    .ctx-btn-outline {
+      padding:9px 22px;
+      border:1px solid var(--border);
+      color:var(--muted);
+      font-family:'Inter',sans-serif;
+      font-size:11px;
+      font-weight:400;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      border-radius:2px;
+    }
+
+    /* ── UI HEADER PREVIEW ── */
+    .ui-preview { background:var(--surface); border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+    .ui-nav {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px 28px; border-bottom:1px solid var(--border);
+    }
+    .ui-logo { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:22px; letter-spacing:0.12em; color:var(--text); }
+    .ui-logo span { color:var(--gold); }
+    .ui-links { display:flex; gap:28px; }
+    .ui-link { font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); font-weight:400; }
+    .ui-link.active { color:var(--text); }
+    .ui-actions { display:flex; gap:12px; align-items:center; }
+    .ui-lang { font-size:11px; letter-spacing:0.1em; color:var(--muted); }
+    .ui-lang span { color:var(--gold); }
+    .ui-cta {
+      padding:8px 18px;
+      background:var(--gold);
+      color:#0A0A0A;
+      font-size:11px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      font-weight:600;
+      border-radius:2px;
+      font-family:'Inter',sans-serif;
+    }
+    .ui-hero {
+      padding:52px 28px 40px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:48px;
+      align-items:center;
+    }
+    .ui-tag {
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+      margin-bottom:14px;
+    }
+    .ui-tag::before { content:''; display:block; width:24px; height:1px; background:var(--gold); }
+    .ui-title {
+      font-family:'Cormorant Garamond',serif;
+      font-weight:300; font-size:44px; line-height:1.05;
+      color:var(--text); margin-bottom:16px;
+    }
+    .ui-title em { font-style:italic; color:var(--gold-lt); }
+    .ui-subtitle {
+      font-family:'Inter',sans-serif;
+      font-weight:300; font-size:13px; line-height:1.7;
+      color:var(--muted); margin-bottom:24px; max-width:300px;
+    }
+    .ui-btns { display:flex; gap:10px; align-items:center; }
+    .ui-btn-primary { padding:9px 20px; background:var(--gold); color:#0A0A0A; font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; border-radius:2px; }
+    .ui-btn-outline  { padding:9px 20px; border:1px solid var(--border); color:var(--muted); font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; border-radius:2px; }
+    .ui-badges { display:flex; gap:8px; margin-top:16px; flex-wrap:wrap; }
+    .ui-badge {
+      padding:5px 11px; border:1px solid var(--border); border-radius:2px;
+      font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted);
+      font-family:'Inter',sans-serif;
+    }
+    .ui-window-mock {
+      background:var(--card); border:1px solid var(--border); border-radius:4px;
+      height:200px; display:flex; align-items:center; justify-content:center;
+      flex-direction:column; gap:12px;
+    }
+    .ui-window-frame { width:110px; height:136px; border:2px solid var(--gold); border-radius:2px; overflow:hidden; }
+    .ui-slat { height:10px; background:linear-gradient(180deg,#C9A96E22 0%,#C9A96E44 100%); border-bottom:1px solid #C9A96E33; }
+    .ui-window-label { font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); font-family:'Inter',sans-serif; }
+
+    @media (max-width:700px) {
+      .weight-grid { grid-template-columns:1fr; }
+      .ui-hero { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WORDMARK -->
+  <div class="brand-wordmark">LUXURY<span>BLIND</span></div>
+  <div class="brand-tagline">Тансаг Цонхны Хөшиг · Солонгос Материал</div>
+  <div style="margin-top:10px">
+    <span class="brand-korea">🇰🇷 Солонгос Материал · Korean Craftsmanship</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 01 COLOR -->
+  <div class="section-label">01 — Өнгөний Систем</div>
+  <div class="palette-row">
+    <div class="swatch">
+      <div class="swatch-block" style="background:#0A0A0A;"></div>
+      <div class="swatch-name">Хар</div>
+      <div class="swatch-hex">#0A0A0A</div>
+      <div class="swatch-role">Дэвсгэр</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#141414;"></div>
+      <div class="swatch-name">Нүүрс</div>
+      <div class="swatch-hex">#141414</div>
+      <div class="swatch-role">Гадаргуу</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#1C1C1C;"></div>
+      <div class="swatch-name">Графит</div>
+      <div class="swatch-hex">#1C1C1C</div>
+      <div class="swatch-role">Карт / Самбар</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#2A2A2A;"></div>
+      <div class="swatch-name">Хар саарал</div>
+      <div class="swatch-hex">#2A2A2A</div>
+      <div class="swatch-role">Хүрээ</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#C9A96E; border-color:#C9A96E;"></div>
+      <div class="swatch-name">Сеул Алт</div>
+      <div class="swatch-hex">#C9A96E</div>
+      <div class="swatch-role">Акцент / CTA</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#E2C99A; border-color:#E2C99A;"></div>
+      <div class="swatch-name">Алт Цайвар</div>
+      <div class="swatch-hex">#E2C99A</div>
+      <div class="swatch-role">Hover / Italic</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#F5F0EB; border-color:#F5F0EB;"></div>
+      <div class="swatch-name">Зааган</div>
+      <div class="swatch-hex">#F5F0EB</div>
+      <div class="swatch-role">Үндсэн текст</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#888;"></div>
+      <div class="swatch-name">Саарал</div>
+      <div class="swatch-hex">#888888</div>
+      <div class="swatch-role">Дагалдах текст</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 02 FONT WEIGHTS -->
+  <div class="section-label">02 — Фонтын Жин (Font Weights)</div>
+  <div class="weight-grid">
+
+    <!-- CORMORANT -->
+    <div class="weight-card">
+      <div class="weight-font-label">Cormorant Garamond — Гарчиг фонт</div>
+
+      <div class="weight-row">
+        <div class="weight-label">300 · Light</div>
+        <div class="weight-sample-serif-light">Тансаг Хөшиг</div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-label">300 · Italic</div>
+        <div class="weight-sample-serif-italic">Орон Зайг Өөрчилнө</div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-label">400 · Regular</div>
+        <div class="weight-sample-serif-regular">Солонгос Материал</div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-label">600 · SemiBold</div>
+        <div class="weight-sample-serif-semibold">Захиалгат Хэмжээ</div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-label">700 · Bold</div>
+        <div class="weight-sample-serif-bold">Дээд Зэргийн Чанар</div>
+      </div>
+
+      <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border);">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Хэрэглээ</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:12px; color:var(--muted); line-height:1.6;">
+          <div>300 Light → Том гарчиг, hero текст</div>
+          <div>300 Italic → Тодруулах үг, бренд мэдрэмж</div>
+          <div>400 Regular → Дунд гарчиг, карт нэр</div>
+          <div>600 SemiBold → Ангиллын нэр, хэсгийн гарчиг</div>
+          <div>700 Bold → Онцгой дугаар, үнэ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTER -->
+    <div class="weight-card">
+      <div class="weight-font-label">Inter — Үндсэн текст фонт</div>
+
+      <div class="weight-row">
+        <div class="weight-label">200 · ExtraLight</div>
+        <div class="weight-sample-sans-thin">Хүргэлт болон дэлгүүрээс авах боломжтой</div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-label">300 · Light</div>
+        <div class="weight-sample-sans-light">Солонгосын чанартай материалаар хийсэн</div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-label">400 · Regular</div>
+        <div class="weight-sample-sans-regular">Цонхны хэмжээг оруулна уу</div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-label">500 · Medium</div>
+        <div class="weight-sample-sans-medium">Бүтээгдэхүүн сонгох →</div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-label">600 · SemiBold</div>
+        <div class="weight-sample-sans-semibold">Хүргэлт: ₮10,000</div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-label">700 · Bold</div>
+        <div class="weight-sample-sans-bold">Захиалах · Visualize</div>
+      </div>
+
+      <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border);">
+        <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Хэрэглээ</div>
+        <div style="font-family:'Inter',sans-serif; font-weight:300; font-size:12px; color:var(--muted); line-height:1.6;">
+          <div>200 ExtraLight → Дагалдах тайлбар, footer</div>
+          <div>300 Light → Бүтээгдэхүүний тайлбар, биеийн текст</div>
+          <div>400 Regular → Форм, оролт, ерөнхий текст</div>
+          <div>500 Medium → Навигаци, холбоос, шошго</div>
+          <div>600 SemiBold → Үнэ, онцолсон мэдээлэл</div>
+          <div>700 Bold → CTA товч, системийн шошго</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 03 CONTEXT -->
+  <div class="section-label">03 — Текстийн Жин Хэрэглээнд</div>
+  <div class="type-context">
+    <div class="ctx-eyebrow">🇰🇷 Солонгос Тансаг Хөшиг</div>
+    <div class="ctx-display">Таны Орон Зайг<br/><em>Шинэчлэнэ</em></div>
+    <div class="ctx-subheading">Захиалгат Хэмжээ · Дээд Чанар</div>
+    <div class="ctx-body">
+      Солонгосын шилдэг материалаар үйлдвэрлэсэн тансаг хөшиг. Цонхны хэмжээгээ оруулж, хөшгөө дүрслэн харж, шууд захиалаарай — таны хаалганд хүргэнэ.
+    </div>
+    <div class="ctx-ui-text">Цонхоо тохируулах →</div>
+    <div class="ctx-price">₮ 285,000</div>
+    <div class="ctx-price-label">Хэмжээнээс хамаарч тооцоологдоно · м² тутамд</div>
+    <div class="ctx-btn-row">
+      <div class="ctx-btn-primary">Захиалах</div>
+      <div class="ctx-btn-outline">Каталог Харах</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 04 UI PREVIEW -->
+  <div class="section-label">04 — UI Харагдац (Header + Hero)</div>
+  <div class="ui-preview">
+    <div class="ui-nav">
+      <div class="ui-logo">LUXURY<span>BLIND</span></div>
+      <div class="ui-links">
+        <div class="ui-link active">Нүүр</div>
+        <div class="ui-link">Бүтээгдэхүүн</div>
+        <div class="ui-link">Дүрслэл</div>
+        <div class="ui-link">Түнш</div>
+        <div class="ui-link">Бидний тухай</div>
+      </div>
+      <div class="ui-actions">
+        <div class="ui-lang"><span>МН</span> / EN</div>
+        <div class="ui-cta">Үнийн Санал</div>
+      </div>
+    </div>
+    <div class="ui-hero">
+      <div>
+        <div class="ui-tag">Солонгос Тансаг Хөшиг</div>
+        <div class="ui-title">Таны Орон Зай.<br/><em>Таны Мөрөөдөл.</em></div>
+        <div class="ui-subtitle">
+          Солонгосын шилдэг материалаар үйлдвэрлэсэн хөшиг. Хэмжих, дүрслэх, захиалах — хаалганд хүргэнэ.
+        </div>
+        <div class="ui-btns">
+          <div class="ui-btn-primary">Цонхоо Дүрслэх</div>
+          <div class="ui-btn-outline">Бүтээгдэхүүн Харах</div>
+        </div>
+        <div class="ui-badges">
+          <div class="ui-badge">🇰🇷 Солонгос Материал</div>
+          <div class="ui-badge">✦ Захиалгат Хэмжээ</div>
+          <div class="ui-badge">⬡ Хүргэлт ₮10,000</div>
+        </div>
+      </div>
+      <div class="ui-window-mock">
+        <div class="ui-window-frame">
+          <div class="ui-slat"></div><div class="ui-slat"></div>
+          <div class="ui-slat"></div><div class="ui-slat"></div>
+          <div class="ui-slat"></div><div class="ui-slat"></div>
+          <div class="ui-slat"></div><div class="ui-slat"></div>
+          <div class="ui-slat"></div><div class="ui-slat"></div>
+          <div class="ui-slat"></div><div class="ui-slat"></div>
+          <div class="ui-slat"></div>
+        </div>
+        <div class="ui-window-label">Цонхны Дүрслэл</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div style="text-align:center; padding:4px 0 0">
+    <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted);">
+      LuxuryBlind · Тансаг Цонхны Хөшиг · Улаанбаатар
+    </div>
+  </div>
+
+</body>
+</html>

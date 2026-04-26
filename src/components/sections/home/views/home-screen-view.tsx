@@ -6,15 +6,14 @@ import HomeScreenCta from "../home-screen-cta";
 import HomeScreenTestimonials from "../home-screen-testimonials";
 
 export default function Home() {
-
-    return (
-        <div className="min-h-screen flex flex-col bg-background">
-            <HomeScreenHero />
-            <HomeScreenBenefits />
-            <HomeScreenFeatured />
-            <HomeScreenProcess />
-            <HomeScreenTestimonials />
-            <HomeScreenCta />
-        </div>
-    );
+  return (
+    <main className="min-h-screen bg-lb-bg">
+      <HomeScreenHero />
+      <HomeScreenBenefits />
+      <HomeScreenFeatured />
+      <HomeScreenProcess />
+      <HomeScreenTestimonials />
+      <HomeScreenCta />
+    </main>
+  );
 }

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxuryBlind — Brand Direction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0A0A0A;
+      --surface: #141414;
+      --card:    #1C1C1C;
+      --border:  #2A2A2A;
+      --text:    #F5F0EB;
+      --muted:   #888888;
+      --gold:    #C9A96E;
+      --gold-lt: #E2C99A;
+      --white:   #FFFFFF;
+    }
+
+    html, body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 48px 40px 80px;
+    }
+
+    /* ─── HEADER ─────────────────────────────── */
+    .brand-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .brand-wordmark {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 42px;
+      letter-spacing: 0.12em;
+      color: var(--text);
+    }
+    .brand-wordmark span {
+      color: var(--gold);
+    }
+    .brand-tagline {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .brand-korea {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 4px 12px;
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 36px 0;
+    }
+
+    /* ─── SECTION LABEL ──────────────────────── */
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    /* ─── COLOR PALETTE ──────────────────────── */
+    .palette-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .swatch-block {
+      width: 96px;
+      height: 72px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .swatch-name {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+    .swatch-hex {
+      font-size: 10px;
+      color: var(--muted);
+      font-family: 'Inter', monospace;
+    }
+    .swatch-role {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    /* ─── TYPOGRAPHY ─────────────────────────── */
+    .type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .type-sample {
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .type-font-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .type-display {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 38px;
+      line-height: 1.1;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+    .type-display em {
+      font-style: italic;
+      color: var(--gold-lt);
+    }
+    .type-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .type-body-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .type-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+    .type-ui {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .type-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── UI PREVIEW ─────────────────────────── */
+    .ui-preview {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .ui-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .ui-nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      color: var(--text);
+    }
+    .ui-nav-logo span { color: var(--gold); }
+    .ui-nav-links {
+      display: flex;
+      gap: 28px;
+    }
+    .ui-nav-link {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .ui-nav-link.active { color: var(--text); }
+    .ui-nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .ui-lang {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .ui-lang span { color: var(--gold); }
+    .ui-btn-primary {
+      padding: 8px 20px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border-radius: 2px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .ui-hero {
+      padding: 56px 28px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .ui-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .ui-hero-tag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .ui-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 44px;
+      line-height: 1.05;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      margin-bottom: 20px;
+    }
+    .ui-hero-title em {
+      font-style: italic;
+      color: var(--gold-lt);
+    }
+    .ui-hero-subtitle {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 28px;
+      max-width: 320px;
+    }
+    .ui-hero-btns {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .ui-btn-outline {
+      padding: 8px 20px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 2px;
+      font-family: 'Inter', sans-serif;
+    }
+    .ui-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ui-window-mock {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ui-window-frame {
+      width: 120px;
+      height: 140px;
+      border: 2px solid var(--gold);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ui-blind-slat {
+      height: 10px;
+      background: linear-gradient(180deg, #C9A96E22 0%, #C9A96E44 100%);
+      border-bottom: 1px solid #C9A96E33;
+    }
+    .ui-window-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ─── PRODUCT CARD ───────────────────────── */
+    .product-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 4px;
+    }
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .product-img {
+      height: 120px;
+      background: linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-slats {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 60px;
+    }
+    .product-slat {
+      height: 6px;
+      background: var(--gold);
+      opacity: 0.4;
+      border-radius: 1px;
+    }
+    .product-slat:nth-child(odd) { opacity: 0.7; }
+    .product-info {
+      padding: 14px;
+    }
+    .product-cat {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .product-made {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .product-made span {
+      color: var(--gold);
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────── */
+    @media (max-width: 700px) {
+      .type-grid { grid-template-columns: 1fr; }
+      .ui-hero { grid-template-columns: 1fr; }
+      .product-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WORDMARK -->
+  <div class="brand-header">
+    <div class="brand-wordmark">LUXURY<span>BLIND</span></div>
+  </div>
+  <div class="brand-tagline">Premium Window Coverings · Korean Craftsmanship</div>
+  <div style="margin-top:10px">
+    <span class="brand-korea">🇰🇷 Korean Material · 한국산 소재</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- COLOR PALETTE -->
+  <div class="section-label">01 — Color Palette</div>
+  <div class="palette-row">
+    <div class="swatch">
+      <div class="swatch-block" style="background:#0A0A0A;"></div>
+      <div class="swatch-name">Void Black</div>
+      <div class="swatch-hex">#0A0A0A</div>
+      <div class="swatch-role">Background</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#141414;"></div>
+      <div class="swatch-name">Carbon</div>
+      <div class="swatch-hex">#141414</div>
+      <div class="swatch-role">Surface</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#1C1C1C;"></div>
+      <div class="swatch-name">Graphite</div>
+      <div class="swatch-hex">#1C1C1C</div>
+      <div class="swatch-role">Cards / Panels</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#2A2A2A;"></div>
+      <div class="swatch-name">Slate</div>
+      <div class="swatch-hex">#2A2A2A</div>
+      <div class="swatch-role">Borders</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#C9A96E; border-color:#C9A96E;"></div>
+      <div class="swatch-name">Seoul Gold</div>
+      <div class="swatch-hex">#C9A96E</div>
+      <div class="swatch-role">Accent / CTAs</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#E2C99A; border-color:#E2C99A;"></div>
+      <div class="swatch-name">Gold Light</div>
+      <div class="swatch-hex">#E2C99A</div>
+      <div class="swatch-role">Hover / Italic</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#F5F0EB; border-color:#F5F0EB;"></div>
+      <div class="swatch-name">Ivory</div>
+      <div class="swatch-hex">#F5F0EB</div>
+      <div class="swatch-role">Primary Text</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#888;"></div>
+      <div class="swatch-name">Ash</div>
+      <div class="swatch-hex">#888888</div>
+      <div class="swatch-role">Muted Text</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="section-label">02 — Typography</div>
+  <div class="type-grid">
+    <div class="type-sample">
+      <div class="type-font-label">Cormorant Garamond — Display & Headings</div>
+      <div class="type-display">Elevate Your<br/><em>Living Space</em></div>
+      <div class="type-heading">Korean Premium Quality</div>
+      <div style="margin-top:12px" class="type-price">₮ 285,000</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-body-label">Inter — Body & UI</div>
+      <div class="type-body">Crafted from premium Korean-sourced materials, each blind is precision-engineered to complement modern architectural interiors.</div>
+      <div class="type-ui">Configure Your Window →</div>
+      <div style="margin-top: 12px; display:flex; gap:8px;">
+        <div style="padding:7px 16px; background:#C9A96E; color:#0A0A0A; font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; border-radius:2px;">Order Now</div>
+        <div style="padding:7px 16px; border:1px solid #2A2A2A; color:#888; font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; border-radius:2px;">View Catalog</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- UI PREVIEW -->
+  <div class="section-label">03 — UI Preview (Header + Hero)</div>
+  <div class="ui-preview">
+    <div class="ui-nav">
+      <div class="ui-nav-logo">LUXURY<span>BLIND</span></div>
+      <div class="ui-nav-links">
+        <div class="ui-nav-link active">Home</div>
+        <div class="ui-nav-link">Products</div>
+        <div class="ui-nav-link">Visualize</div>
+        <div class="ui-nav-link">Partners</div>
+        <div class="ui-nav-link">About</div>
+      </div>
+      <div class="ui-nav-actions">
+        <div class="ui-lang"><span>MN</span> / EN</div>
+        <div class="ui-btn-primary">Get Quote</div>
+      </div>
+    </div>
+    <div class="ui-hero">
+      <div>
+        <div class="ui-hero-tag">Korean Premium Blinds</div>
+        <div class="ui-hero-title">Define Your<br/><em>Space. Your</em><br/>Vision.</div>
+        <div class="ui-hero-subtitle">Premium window coverings crafted from Korean-sourced materials. Measure, visualize, and order — delivered to your door.</div>
+        <div class="ui-hero-btns">
+          <div class="ui-btn-primary">Visualize My Window</div>
+          <div class="ui-btn-outline">Browse Products</div>
+        </div>
+        <div style="margin-top:20px; display:flex; gap:8px;">
+          <div class="ui-hero-badge">🇰🇷 Korean Material</div>
+          <div class="ui-hero-badge">✦ Custom Size</div>
+          <div class="ui-hero-badge">⬡ Free Delivery*</div>
+        </div>
+      </div>
+      <div class="ui-window-mock">
+        <div class="ui-window-frame">
+          <div class="ui-blind-slat"></div><div class="ui-blind-slat"></div>
+          <div class="ui-blind-slat"></div><div class="ui-blind-slat"></div>
+          <div class="ui-blind-slat"></div><div class="ui-blind-slat"></div>
+          <div class="ui-blind-slat"></div><div class="ui-blind-slat"></div>
+          <div class="ui-blind-slat"></div><div class="ui-blind-slat"></div>
+          <div class="ui-blind-slat"></div><div class="ui-blind-slat"></div>
+          <div class="ui-blind-slat"></div>
+        </div>
+        <div class="ui-window-label">Window Visualizer</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PRODUCT CARDS -->
+  <div class="section-label">04 — Product Card Style</div>
+  <div class="product-row">
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-slats">
+          <div class="product-slat"></div><div class="product-slat"></div>
+          <div class="product-slat"></div><div class="product-slat"></div>
+          <div class="product-slat"></div><div class="product-slat"></div>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Wood Collection</div>
+        <div class="product-name">Модон хөшиг</div>
+        <div class="product-made">Material: <span>Korean Oak 100%</span></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-slats">
+          <div class="product-slat" style="opacity:0.3"></div><div class="product-slat" style="opacity:0.5"></div>
+          <div class="product-slat" style="opacity:0.3"></div><div class="product-slat" style="opacity:0.6"></div>
+          <div class="product-slat" style="opacity:0.3"></div><div class="product-slat" style="opacity:0.5"></div>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Roller Collection</div>
+        <div class="product-name">Роллер хөшиг</div>
+        <div class="product-made">Material: <span>Korean Polyester</span></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-slats">
+          <div class="product-slat" style="height:8px"></div>
+          <div class="product-slat" style="height:4px;opacity:0.2"></div>
+          <div class="product-slat" style="height:8px"></div>
+          <div class="product-slat" style="height:4px;opacity:0.2"></div>
+          <div class="product-slat" style="height:8px"></div>
+          <div class="product-slat" style="height:4px;opacity:0.2"></div>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Kombi Collection</div>
+        <div class="product-name">Комби хөшиг</div>
+        <div class="product-made">Material: <span>Korean Fabric</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div style="text-align:center; padding: 8px 0 0">
+    <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color: var(--muted);">
+      LuxuryBlind · Premium Korean Window Coverings · Ulaanbaatar
+    </div>
+  </div>
+
+</body>
+</html>

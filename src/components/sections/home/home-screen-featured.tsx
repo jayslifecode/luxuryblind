@@ -1,114 +1,117 @@
-import { MapPin, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import Image from "next/image";
+"use client";
+
+import { motion } from "motion/react";
+import Link from "next/link";
+import { useLanguage } from "@/lib/context/language-context";
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { KoreanBadge } from "@/components/ui/korean-badge";
+import { PriceDisplay } from "@/components/ui/price-display";
+import TiltCard from "@/components/ui/tilt-card";
+import ImageWithSkeleton from "@/components/ui/image-with-skeleton";
+import { ArrowRight } from "lucide-react";
+import products from "@/data/product.json";
 
 export default function HomeScreenFeatured() {
-    const featuredProjects = [
-        {
-            title: "Корпорацийн Оффисын Шинэчлэл",
-            location: "Төв Бизнесийн Дүүрэг",
-            description: "20 давхар оффисын барилгад мотортой гулгадаг хөшигний бүрэн суурилуулалт",
-            image: "/api/placeholder/600/400",
-        },
-        {
-            title: "Тансаг Гэрийн Өөрчлөлт",
-            location: "Хотын Захын Орон Сууцны Хаалга",
-            description: "Унтлагын өрөө болон хүүхдийн өрөөнд харанхуйлагчтай захиалгат ромын хөшиг",
-            image: "/api/placeholder/600/400",
-        },
-        {
-            title: "Рестораны Уур Амьсгалын Сайжруулалт",
-            location: "Далайн Хажуугийн Хоолны Дүүрэг",
-            description: "Харагдацыг хадгалахын зэрэгцээ хувийн байдлыг хангасан гэрэл шүүдэг босоо хөшиг",
-            image: "/api/placeholder/600/400",
-        },
-    ];
+  const { t } = useLanguage();
+  const featured = products.slice(0, 3);
 
-    return (
-        <section className="py-16 bg-muted/50 dark:bg-muted/10">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary dark:text-foreground mb-4">
-                        Онцлох Төслүүд
-                    </h2>
-                    <p className="text-muted-foreground dark:text-muted-foreground max-w-2xl mx-auto">
-                        Манай сүүлийн үеийн суурилуулалтуудыг харж, цонхны хөшигний шийдлүүдийн чанар болон
-                        олон талт байдлыг танилцаарай.
-                    </p>
-                </div>
+  return (
+    <section className="py-20 sm:py-28 bg-lb-cream">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12"
+        >
+          <div>
+            <Eyebrow className="mb-3 text-lb-text-md">{t.featured.eyebrow}</Eyebrow>
+            <h2 className="font-display text-3xl sm:text-4xl font-light text-lb-text">
+              {t.featured.heading}
+            </h2>
+          </div>
+          <motion.div
+            whileHover={{ x: 5 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link
+              href="/products"
+              className="font-sans text-sm text-lb-gold hover:text-lb-gold-lt transition-colors shrink-0 font-semibold inline-flex items-center gap-2 group"
+            >
+              {t.featured.viewAll}
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </motion.div>
 
-                <Carousel className="w-full max-w-5xl mx-auto">
-                    <CarouselContent>
-                        {featuredProjects.map((project) => (
-                            <CarouselItem key={project.title}>
-                                <Card className="overflow-hidden">
-                                    <Image
-                                        fill
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="w-full h-64 object-cover"
-                                    />
-                                    <CardHeader>
-                                        <div className="flex items-center mb-1">
-                                            <MapPin className="w-4 h-4 text-accent mr-1" />
-                                            <span className="text-sm text-muted-foreground">
-                                                {project.location}
-                                            </span>
-                                        </div>
-                                        <CardTitle>{project.title}</CardTitle>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p className="text-muted-foreground">
-                                            {project.description}
-                                        </p>
-                                    </CardContent>
-                                    <CardFooter>
-                                        <Dialog>
-                                            <DialogTrigger asChild>
-                                                <Button variant="link" className="flex items-center text-accent p-0">
-                                                    Төслийг Харах <ChevronRight className="w-4 h-4 ml-1" />
-                                                </Button>
-                                            </DialogTrigger>
-                                            <DialogContent>
-                                                <DialogHeader>
-                                                    <DialogTitle>{project.title}</DialogTitle>
-                                                    <DialogDescription>{project.location}</DialogDescription>
-                                                </DialogHeader>
-                                                <Image
-                                                    src={project.image}
-                                                    alt={project.title}
-                                                    fill
-                                                    className="w-full h-64 object-cover rounded-md my-4"
-                                                />
-                                                <p className="text-muted-foreground">{project.description}</p>
-                                                <p className="mt-4">
-                                                    Энэхүү төсөл нь бидний чанар болон нарийвчлалд анхаарал хандуулдагыг
-                                                    харуулдаг. Үйлчлүүлэгч орон зайн гоо зүй болон үйл ажиллагааг сайжруулах
-                                                    шийдэл хайж байсан бөгөөд манай баг тэдний хүлээлтээс давсан захиалгат
-                                                    шийдлийг хүргэсэн.
-                                                </p>
-                                            </DialogContent>
-                                        </Dialog>
-                                    </CardFooter>
-                                </Card>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <div className="flex justify-center mt-4 gap-2">
-                        <CarouselPrevious />
-                        <CarouselNext />
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {featured.map((product, i) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: i * 0.1, type: "spring", stiffness: 100 }}
+            >
+              <TiltCard tiltAmount={8} className="h-full">
+                <motion.div
+                  className="group bg-lb-white rounded-sm overflow-hidden border border-lb-lborder shadow-sm hover:shadow-xl transition-shadow duration-500 h-full"
+                  whileHover={{ y: -8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <Link href={`/products/${product.id}`} className="block h-full">
+                    <div className="relative aspect-[4/5] overflow-hidden bg-lb-cream">
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      />
+                      <ImageWithSkeleton
+                        src={product.images[0]}
+                        alt={product.title}
+                        fill
+                        className="transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <motion.div
+                        className="absolute top-3 left-3 z-10"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.2 + i * 0.05 }}
+                      >
+                        <KoreanBadge />
+                      </motion.div>
+                      <motion.div
+                        className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                      >
+                        <div className="bg-lb-gold/95 backdrop-blur-sm text-lb-bg py-3 px-4 rounded-t-lg flex items-center justify-between">
+                          <span className="font-sans text-xs font-semibold tracking-wider uppercase">
+                            {t.featured.configure}
+                          </span>
+                          <ArrowRight size={16} />
+                        </div>
+                      </motion.div>
                     </div>
-                </Carousel>
-
-                <div className="text-center mt-12">
-                    <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-                        Бүх Төслүүдийг Харах
-                    </Button>
-                </div>
-            </div>
-        </section>
-    );
+                    <div className="p-5 space-y-3">
+                      <motion.h3
+                        className="font-display text-xl font-light text-lb-text group-hover:text-lb-gold transition-colors duration-300"
+                      >
+                        {product.title}
+                      </motion.h3>
+                      <p className="font-sans text-xs text-lb-text-md leading-relaxed line-clamp-2">
+                        {product.description}
+                      </p>
+                      <div className="flex items-baseline gap-1.5 pt-2">
+                        <span className="font-sans text-xs text-lb-text-md">{t.featured.from}</span>
+                        <PriceDisplay amount={product.pricePerSqm} size="sm" />
+                        <span className="font-sans text-xs text-lb-text-md">/ {t.featured.perSqm}</span>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              </TiltCard>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

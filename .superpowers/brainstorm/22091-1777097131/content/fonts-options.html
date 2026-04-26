@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Font Options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@200;300;400;500;600&family=Bodoni+Moda:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600;700&family=Gilda+Display&family=Raleway:wght@200;300;400;500;600;700&family=Tenor+Sans&family=Jost:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0A0A0A; --surface: #141414; --card: #1C1C1C;
+      --border: #2A2A2A; --text: #F5F0EB; --muted: #888;
+      --gold: #C9A96E; --gold-lt: #E2C99A;
+    }
+    html, body { background: var(--black); color: var(--text); font-family: 'Outfit', sans-serif; padding: 40px; min-height: 100vh; }
+
+    h2 { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+    .subtitle { font-size: 12px; color: var(--muted); margin-top: -20px; margin-bottom: 28px; font-weight: 300; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .font-card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .font-card:hover { border-color: #444; }
+    .font-card.selected { border-color: var(--gold); }
+
+    .font-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-family: 'Outfit', sans-serif;
+    }
+    .font-tag.rec { border-color: var(--gold); color: var(--gold); }
+
+    /* ── OPTION A: Playfair Display + DM Sans ── */
+    .a-display { font-family: 'Playfair Display', serif; font-weight: 300; font-size: 36px; line-height: 1.1; color: var(--text); }
+    .a-display em { font-style: italic; color: var(--gold-lt); }
+    .a-sub    { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text); margin: 12px 0 8px; }
+    .a-body   { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 12px; line-height: 1.7; color: var(--muted); }
+    .a-ui     { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text); margin-top: 12px; }
+    .a-price  { font-family: 'Playfair Display', serif; font-weight: 300; font-size: 28px; color: var(--gold); margin-top: 6px; }
+
+    /* ── OPTION B: Bodoni Moda + Outfit ── */
+    .b-display { font-family: 'Bodoni Moda', serif; font-weight: 300; font-size: 34px; line-height: 1.1; color: var(--text); }
+    .b-display em { font-style: italic; color: var(--gold-lt); }
+    .b-sub    { font-family: 'Bodoni Moda', serif; font-weight: 400; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); margin: 12px 0 8px; }
+    .b-body   { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 12px; line-height: 1.7; color: var(--muted); }
+    .b-ui     { font-family: 'Outfit', sans-serif; font-weight: 500; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text); margin-top: 12px; }
+    .b-price  { font-family: 'Bodoni Moda', serif; font-weight: 300; font-size: 28px; color: var(--gold); margin-top: 6px; }
+
+    /* ── OPTION C: Gilda Display + Raleway ── */
+    .c-display { font-family: 'Gilda Display', serif; font-weight: 400; font-size: 36px; line-height: 1.1; color: var(--text); }
+    .c-sub    { font-family: 'Gilda Display', serif; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); margin: 12px 0 8px; }
+    .c-body   { font-family: 'Raleway', sans-serif; font-weight: 300; font-size: 12px; line-height: 1.7; color: var(--muted); }
+    .c-ui     { font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); margin-top: 12px; }
+    .c-price  { font-family: 'Gilda Display', serif; font-size: 28px; color: var(--gold); margin-top: 6px; }
+
+    /* ── OPTION D: Tenor Sans + Jost ── */
+    .d-display { font-family: 'Tenor Sans', sans-serif; font-size: 32px; line-height: 1.1; color: var(--text); letter-spacing: 0.03em; }
+    .d-sub    { font-family: 'Tenor Sans', sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text); margin: 12px 0 8px; }
+    .d-body   { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 12px; line-height: 1.7; color: var(--muted); }
+    .d-ui     { font-family: 'Jost', sans-serif; font-weight: 500; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text); margin-top: 12px; }
+    .d-price  { font-family: 'Tenor Sans', sans-serif; font-size: 28px; color: var(--gold); margin-top: 6px; letter-spacing: 0.04em; }
+
+    /* ── SHARED ELEMENTS ── */
+    .btn-row { display: flex; gap: 8px; margin-top: 16px; }
+    .btn-gold { padding: 7px 16px; background: var(--gold); color: #0A0A0A; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 2px; }
+    .btn-out  { padding: 7px 16px; border: 1px solid var(--border); color: var(--muted); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; }
+    .btn-gold.a, .btn-out.a { font-family: 'DM Sans', sans-serif; }
+    .btn-gold.b, .btn-out.b { font-family: 'Outfit', sans-serif; }
+    .btn-gold.c, .btn-out.c { font-family: 'Raleway', sans-serif; }
+    .btn-gold.d, .btn-out.d { font-family: 'Jost', sans-serif; }
+
+    .divider-inner { height: 1px; background: var(--border); margin: 16px 0; }
+
+    .pair-label {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+    }
+
+    .selected-badge {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: var(--gold);
+      color: #0A0A0A;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+      display: none;
+      font-family: 'Outfit', sans-serif;
+    }
+    .font-card.selected .selected-badge { display: block; }
+
+    @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <h2>02 — Фонтын Сонголт</h2>
+  <p class="subtitle">Дараах 4 хослолоос нэгийг сонгоно уу — бүгд Mongolian текстийн жингийн харьцааг харуулна</p>
+
+  <div class="grid">
+
+    <!-- A -->
+    <div class="font-card" data-choice="a" onclick="toggleSelect(this)">
+      <div class="selected-badge">✓ Сонгосон</div>
+      <div class="font-tag rec">⭐ Санал болгож байна</div>
+      <div class="pair-label">Playfair Display + DM Sans</div>
+
+      <div class="a-display">Таны Орон Зайг<br/><em>Шинэчлэнэ</em></div>
+      <div class="a-sub">Захиалгат Хэмжээ · Солонгос Материал</div>
+      <div class="a-body">Солонгосын шилдэг материалаар үйлдвэрлэсэн тансаг хөшиг. Цонхны хэмжээгээ оруулж, хөшгөө дүрслэн харж, шууд захиалаарай.</div>
+      <div class="a-ui">Цонхоо Дүрслэх →</div>
+      <div class="a-price">₮ 285,000</div>
+
+      <div class="divider-inner"></div>
+      <div class="btn-row">
+        <div class="btn-gold a">Захиалах</div>
+        <div class="btn-out a">Каталог Харах</div>
+      </div>
+
+      <div style="margin-top:16px; font-size:10px; color:var(--muted); font-family:'DM Sans',sans-serif; line-height:1.6;">
+        <span style="color:var(--gold);">Мэдрэмж:</span> Классик тансаг, ном зохиолын мэдрэмж. Дулаан, гоёмсог.
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="font-card" data-choice="b" onclick="toggleSelect(this)">
+      <div class="selected-badge">✓ Сонгосон</div>
+      <div class="font-tag">Хамгийн Зоригтой</div>
+      <div class="pair-label">Bodoni Moda + Outfit</div>
+
+      <div class="b-display">Таны Орон Зайг<br/><em>Шинэчлэнэ</em></div>
+      <div class="b-sub">Захиалгат Хэмжээ · Солонгос Материал</div>
+      <div class="b-body">Солонгосын шилдэг материалаар үйлдвэрлэсэн тансаг хөшиг. Цонхны хэмжээгээ оруулж, хөшгөө дүрслэн харж, шууд захиалаарай.</div>
+      <div class="b-ui">Цонхоо Дүрслэх →</div>
+      <div class="b-price">₮ 285,000</div>
+
+      <div class="divider-inner"></div>
+      <div class="btn-row">
+        <div class="btn-gold b">Захиалах</div>
+        <div class="btn-out b">Каталог Харах</div>
+      </div>
+
+      <div style="margin-top:16px; font-size:10px; color:var(--muted); font-family:'Outfit',sans-serif; line-height:1.6;">
+        <span style="color:var(--gold);">Мэдрэмж:</span> Өндөр загвар, тод, архитектурын хүч. Luxury fashion брэнд.
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="font-card" data-choice="c" onclick="toggleSelect(this)">
+      <div class="selected-badge">✓ Сонгосон</div>
+      <div class="font-tag">Хамгийн Зөөлөн</div>
+      <div class="pair-label">Gilda Display + Raleway</div>
+
+      <div class="c-display">Таны Орон Зайг Шинэчлэнэ</div>
+      <div class="c-sub">Захиалгат Хэмжээ · Солонгос Материал</div>
+      <div class="c-body">Солонгосын шилдэг материалаар үйлдвэрлэсэн тансаг хөшиг. Цонхны хэмжээгээ оруулж, хөшгөө дүрслэн харж, шууд захиалаарай.</div>
+      <div class="c-ui">Цонхоо Дүрслэх →</div>
+      <div class="c-price">₮ 285,000</div>
+
+      <div class="divider-inner"></div>
+      <div class="btn-row">
+        <div class="btn-gold c">Захиалах</div>
+        <div class="btn-out c">Каталог Харах</div>
+      </div>
+
+      <div style="margin-top:16px; font-size:10px; color:var(--muted); font-family:'Raleway',sans-serif; line-height:1.6;">
+        <span style="color:var(--gold);">Мэдрэмж:</span> Хөнгөн, нарийн, арт-дэко мэдрэмж. Тайван тансаг.
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="font-card" data-choice="d" onclick="toggleSelect(this)">
+      <div class="selected-badge">✓ Сонгосон</div>
+      <div class="font-tag">Хамгийн Орчин Үеийн</div>
+      <div class="pair-label">Tenor Sans + Jost</div>
+
+      <div class="d-display">Таны Орон Зайг Шинэчлэнэ</div>
+      <div class="d-sub">Захиалгат Хэмжээ · Солонгос Материал</div>
+      <div class="d-body">Солонгосын шилдэг материалаар үйлдвэрлэсэн тансаг хөшиг. Цонхны хэмжээгээ оруулж, хөшгөө дүрслэн харж, шууд захиалаарай.</div>
+      <div class="d-ui">Цонхоо Дүрслэх →</div>
+      <div class="d-price">₮ 285,000</div>
+
+      <div class="divider-inner"></div>
+      <div class="btn-row">
+        <div class="btn-gold d">Захиалах</div>
+        <div class="btn-out d">Каталог Харах</div>
+      </div>
+
+      <div style="margin-top:16px; font-size:10px; color:var(--muted); font-family:'Jost',sans-serif; line-height:1.6;">
+        <span style="color:var(--gold);">Мэдрэмж:</span> Архитектурын, геометрик, минималист. Хамгийн орчин үеийн.
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleSelect(el) {
+      document.querySelectorAll('.font-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      if (window.__companion) window.__companion.select(el.dataset.choice, el.querySelector('.pair-label').textContent);
+    }
+  </script>
+
+</body>
+</html>

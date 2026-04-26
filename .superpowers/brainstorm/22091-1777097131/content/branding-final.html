@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxuryBlind — Брэнд</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@200;300;400;500;600;700&family=Bodoni+Moda:opsz,wght@6,300;6,400;6,500;6,600;12,300;12,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0A0A0A; --surface: #141414; --card: #1C1C1C;
+      --border: #2A2A2A; --text: #F5F0EB; --muted: #888;
+      --gold: #C9A96E; --gold-lt: #E2C99A;
+    }
+    html, body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      padding: 48px 40px 80px;
+      min-height: 100vh;
+    }
+
+    /* Numbers always use Bodoni Moda with tabular alignment */
+    .num {
+      font-family: 'Bodoni Moda', serif;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+    }
+
+    .section-label {
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .divider { height: 1px; background: var(--border); margin: 36px 0; }
+
+    /* ── WORDMARK ── */
+    .wordmark {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 44px;
+      letter-spacing: 0.1em;
+      color: var(--text);
+    }
+    .wordmark span { color: var(--gold); }
+    .tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .korea-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 10px; padding: 4px 12px;
+      border: 1px solid var(--gold); border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── FONT WEIGHT TABLE ── */
+    .weight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .weight-card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 24px; }
+    .weight-font-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-family: 'DM Sans', sans-serif; }
+    .weight-row { display: flex; align-items: baseline; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); gap: 16px; }
+    .weight-row:last-child { border-bottom: none; }
+    .weight-label { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; width: 80px; flex-shrink: 0; font-family: 'DM Sans', sans-serif; }
+
+    /* Playfair weights */
+    .pf-300 { font-family:'Playfair Display',serif; font-weight:300; font-size:22px; color:var(--text); }
+    .pf-300i{ font-family:'Playfair Display',serif; font-weight:300; font-size:22px; font-style:italic; color:var(--gold-lt); }
+    .pf-400 { font-family:'Playfair Display',serif; font-weight:400; font-size:22px; color:var(--text); }
+    .pf-500 { font-family:'Playfair Display',serif; font-weight:500; font-size:22px; color:var(--text); }
+    .pf-600 { font-family:'Playfair Display',serif; font-weight:600; font-size:21px; color:var(--text); }
+    .pf-700 { font-family:'Playfair Display',serif; font-weight:700; font-size:20px; color:var(--text); }
+
+    /* DM Sans weights */
+    .dm-200 { font-family:'DM Sans',sans-serif; font-weight:200; font-size:13px; color:var(--muted); }
+    .dm-300 { font-family:'DM Sans',sans-serif; font-weight:300; font-size:13px; color:var(--muted); }
+    .dm-400 { font-family:'DM Sans',sans-serif; font-weight:400; font-size:13px; color:var(--text); }
+    .dm-500 { font-family:'DM Sans',sans-serif; font-weight:500; font-size:13px; color:var(--text); }
+    .dm-600 { font-family:'DM Sans',sans-serif; font-weight:600; font-size:12px; color:var(--text); letter-spacing:0.06em; }
+    .dm-700 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:11px; color:var(--text); letter-spacing:0.12em; text-transform:uppercase; }
+
+    /* ── NUMBER SHOWCASE ── */
+    .num-section { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 28px; }
+    .num-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 1fr;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 24px;
+    }
+    .num-row:last-child { border-bottom: none; }
+    .num-row-label { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; font-family: 'DM Sans', sans-serif; }
+
+    /* Bodoni numbers — different weights */
+    .bd-300 {
+      font-family: 'Bodoni Moda', serif; font-weight: 300;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+    }
+    .bd-400 {
+      font-family: 'Bodoni Moda', serif; font-weight: 400;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+    }
+    .bd-500 {
+      font-family: 'Bodoni Moda', serif; font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+    }
+
+    .num-price    { font-size: 32px; color: var(--gold); }
+    .num-dims     { font-size: 22px; color: var(--text); }
+    .num-delivery { font-size: 18px; color: var(--text); }
+    .num-qty      { font-size: 26px; color: var(--text); }
+
+    /* comparison column labels */
+    .col-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+
+    /* ── UI IN CONTEXT ── */
+    .context-card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 32px; }
+    .ctx-eyebrow { font-family:'DM Sans',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+    .ctx-display { font-family:'Playfair Display',serif; font-weight:400; font-size:46px; line-height:1.05; color:var(--text); margin-bottom:6px; }
+    .ctx-display em { font-style:italic; color:var(--gold-lt); font-weight:300; }
+    .ctx-sub { font-family:'Playfair Display',serif; font-weight:600; font-size:15px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text); margin:16px 0 8px; }
+    .ctx-body { font-family:'DM Sans',sans-serif; font-weight:300; font-size:13px; line-height:1.75; color:var(--muted); max-width:480px; }
+    .ctx-ui { font-family:'DM Sans',sans-serif; font-weight:500; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text); margin-top:16px; }
+
+    .price-block { margin-top: 16px; display: flex; align-items: baseline; gap: 8px; }
+    .price-main { font-family:'Bodoni Moda',serif; font-weight:300; font-size:36px; color:var(--gold); font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1,"lnum" 1; }
+    .price-unit { font-family:'DM Sans',sans-serif; font-weight:300; font-size:12px; color:var(--muted); }
+
+    .delivery-row { display:flex; gap:24px; margin-top:12px; }
+    .delivery-opt { display:flex; align-items:center; gap:8px; }
+    .delivery-label { font-family:'DM Sans',sans-serif; font-weight:400; font-size:12px; color:var(--muted); }
+    .delivery-price { font-family:'Bodoni Moda',serif; font-weight:400; font-size:16px; color:var(--text); font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1; }
+    .delivery-free  { font-family:'DM Sans',sans-serif; font-weight:500; font-size:12px; color:var(--gold); }
+
+    .ctx-btn-row { display:flex; gap:10px; margin-top:20px; }
+    .ctx-btn-primary { padding:10px 24px; background:var(--gold); color:#0A0A0A; font-family:'DM Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; border-radius:2px; }
+    .ctx-btn-outline  { padding:10px 24px; border:1px solid var(--border); color:var(--muted); font-family:'DM Sans',sans-serif; font-size:11px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; border-radius:2px; }
+
+    /* ── PRODUCT CARD ── */
+    .product-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .product-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .product-img { height: 110px; background: linear-gradient(135deg,#1C1C1C,#2A2A2A); display:flex; align-items:center; justify-content:center; }
+    .product-slats { display:flex; flex-direction:column; gap:5px; width:56px; }
+    .product-slat { height:7px; background:var(--gold); border-radius:1px; }
+    .product-slat:nth-child(odd) { opacity:0.45; }
+    .product-info { padding: 14px; }
+    .product-cat { font-family:'DM Sans',sans-serif; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+    .product-name { font-family:'Playfair Display',serif; font-weight:400; font-size:17px; color:var(--text); margin-bottom:6px; }
+    .product-material { font-family:'DM Sans',sans-serif; font-size:11px; color:var(--muted); margin-bottom:8px; }
+    .product-material span { color:var(--gold); }
+    .product-price { font-family:'Bodoni Moda',serif; font-weight:300; font-size:20px; color:var(--gold); font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1,"lnum" 1; }
+    .product-price-unit { font-family:'DM Sans',sans-serif; font-size:10px; color:var(--muted); margin-top:2px; }
+
+    @media (max-width:700px) {
+      .weight-grid { grid-template-columns:1fr; }
+      .product-row { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WORDMARK -->
+  <div class="wordmark">LUXURY<span>BLIND</span></div>
+  <div class="tagline">Тансаг Цонхны Хөшиг · Солонгос Материал</div>
+  <div style="margin-top:10px"><span class="korea-badge">🇰🇷 Солонгос Материал · Korean Craftsmanship</span></div>
+  <div style="margin-top:8px; font-family:'DM Sans',sans-serif; font-size:11px; color:var(--muted);">
+    Фонт: <span style="color:var(--text);">Playfair Display</span> (гарчиг) · <span style="color:var(--text);">DM Sans</span> (текст) · <span style="color:var(--text);">Bodoni Moda</span> (тоо)
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FONT WEIGHTS -->
+  <div class="section-label">01 — Фонтын Жин</div>
+  <div class="weight-grid">
+    <div class="weight-card">
+      <div class="weight-font-label">Playfair Display — Гарчиг</div>
+      <div class="weight-row"><div class="weight-label">300 · Light</div><div class="pf-300">Тансаг Хөшиг</div></div>
+      <div class="weight-row"><div class="weight-label">300 · Italic</div><div class="pf-300i">Орон Зайг Өөрчилнө</div></div>
+      <div class="weight-row"><div class="weight-label">400 · Regular</div><div class="pf-400">Солонгос Материал</div></div>
+      <div class="weight-row"><div class="weight-label">500 · Medium</div><div class="pf-500">Захиалгат Хэмжээ</div></div>
+      <div class="weight-row"><div class="weight-label">600 · SemiBold</div><div class="pf-600">Дээд Чанарын Бүтээгдэхүүн</div></div>
+      <div class="weight-row"><div class="weight-label">700 · Bold</div><div class="pf-700">Бидний Тухай</div></div>
+    </div>
+    <div class="weight-card">
+      <div class="weight-font-label">DM Sans — Биеийн Текст & UI</div>
+      <div class="weight-row"><div class="weight-label">200 · ExtraLight</div><div class="dm-200">Хүргэлт болон дэлгүүрээс авах боломжтой</div></div>
+      <div class="weight-row"><div class="weight-label">300 · Light</div><div class="dm-300">Солонгосын чанартай материалаар хийсэн</div></div>
+      <div class="weight-row"><div class="weight-label">400 · Regular</div><div class="dm-400">Цонхны хэмжээг оруулна уу</div></div>
+      <div class="weight-row"><div class="weight-label">500 · Medium</div><div class="dm-500">Бүтээгдэхүүн сонгох →</div></div>
+      <div class="weight-row"><div class="weight-label">600 · SemiBold</div><div class="dm-600">Хүргэлт болон Хүлээн авалт</div></div>
+      <div class="weight-row"><div class="weight-label">700 · Bold</div><div class="dm-700">Захиалах · Order Now</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- NUMBER SHOWCASE -->
+  <div class="section-label">02 — Bodoni Moda Тоо — Тэгш Зэрэгцсэн</div>
+  <div class="num-section">
+
+    <div class="num-row">
+      <div></div>
+      <div class="col-label">300 · Light</div>
+      <div class="col-label">400 · Regular</div>
+    </div>
+
+    <div class="num-row">
+      <div class="num-row-label">Үнэ (Price)</div>
+      <div class="bd-300 num-price">₮ 285,000</div>
+      <div class="bd-400 num-price">₮ 285,000</div>
+    </div>
+
+    <div class="num-row">
+      <div class="num-row-label">Хэмжээ (Size)</div>
+      <div class="bd-300 num-dims" style="font-size:22px; color:var(--text);">120 × 180 см</div>
+      <div class="bd-400 num-dims" style="font-size:22px; color:var(--text);">120 × 180 см</div>
+    </div>
+
+    <div class="num-row">
+      <div class="num-row-label">Хүргэлт</div>
+      <div class="bd-300 num-delivery" style="color:var(--text);">+ ₮ 10,000</div>
+      <div class="bd-400 num-delivery" style="color:var(--text);">+ ₮ 10,000</div>
+    </div>
+
+    <div class="num-row">
+      <div class="num-row-label">Тоо ширхэг</div>
+      <div class="bd-300 num-qty" style="color:var(--text);">01 — 12 ширхэг</div>
+      <div class="bd-400 num-qty" style="color:var(--text);">01 — 12 ширхэг</div>
+    </div>
+
+    <div class="num-row">
+      <div class="num-row-label">Бүгд нийт</div>
+      <div class="bd-300" style="font-size:28px; color:var(--gold-lt); font-variant-numeric:tabular-nums; font-feature-settings:'tnum' 1,'lnum' 1;">₮ 1,250,000</div>
+      <div class="bd-400" style="font-size:28px; color:var(--gold-lt); font-variant-numeric:tabular-nums; font-feature-settings:'tnum' 1,'lnum' 1;">₮ 1,250,000</div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- IN CONTEXT -->
+  <div class="section-label">03 — Хэрэглээнд (Hero Section)</div>
+  <div class="context-card">
+    <div class="ctx-eyebrow">🇰🇷 Солонгос Тансаг Хөшиг</div>
+    <div class="ctx-display">Таны Орон Зайг<br/><em>Шинэчлэнэ</em></div>
+    <div class="ctx-sub">Захиалгат Хэмжээ · Солонгос Материал</div>
+    <div class="ctx-body">
+      Солонгосын шилдэг материалаар үйлдвэрлэсэн тансаг хөшиг. Цонхны хэмжээгээ оруулж, хөшгөө дүрслэн харж, шууд захиалаарай — таны хаалганд хүргэнэ.
+    </div>
+    <div class="ctx-ui">Цонхоо Дүрслэх →</div>
+    <div class="price-block">
+      <div class="price-main">₮ 285,000</div>
+      <div class="price-unit">м² тутамд · хэмжээнээс хамаарна</div>
+    </div>
+    <div class="delivery-row">
+      <div class="delivery-opt">
+        <div style="width:6px; height:6px; background:var(--gold); border-radius:50%;"></div>
+        <div class="delivery-label">Хүргэлт</div>
+        <div class="delivery-price">+ ₮ 10,000</div>
+      </div>
+      <div class="delivery-opt">
+        <div style="width:6px; height:6px; border:1px solid var(--border); border-radius:50%;"></div>
+        <div class="delivery-label">Дэлгүүрээс авах</div>
+        <div class="delivery-free">Үнэгүй</div>
+      </div>
+    </div>
+    <div class="ctx-btn-row">
+      <div class="ctx-btn-primary">Захиалах</div>
+      <div class="ctx-btn-outline">Каталог Харах</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PRODUCT CARDS -->
+  <div class="section-label">04 — Бүтээгдэхүүний Карт</div>
+  <div class="product-row">
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-slats">
+          <div class="product-slat"></div><div class="product-slat"></div>
+          <div class="product-slat"></div><div class="product-slat"></div>
+          <div class="product-slat"></div><div class="product-slat"></div>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Модон Цуглуулга</div>
+        <div class="product-name">Модон хөшиг</div>
+        <div class="product-material">Материал: <span>Солонгос Мод 100%</span></div>
+        <div class="product-price">₮ 185,000</div>
+        <div class="product-price-unit">м² тутамд</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-slats">
+          <div class="product-slat" style="opacity:0.3"></div>
+          <div class="product-slat" style="opacity:0.6"></div>
+          <div class="product-slat" style="opacity:0.3"></div>
+          <div class="product-slat" style="opacity:0.6"></div>
+          <div class="product-slat" style="opacity:0.3"></div>
+          <div class="product-slat" style="opacity:0.6"></div>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Роллер Цуглуулга</div>
+        <div class="product-name">Роллер хөшиг</div>
+        <div class="product-material">Материал: <span>Солонгос Полиэстр</span></div>
+        <div class="product-price">₮ 145,000</div>
+        <div class="product-price-unit">м² тутамд</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">
+        <div class="product-slats">
+          <div class="product-slat" style="height:9px"></div>
+          <div class="product-slat" style="height:4px;opacity:0.2"></div>
+          <div class="product-slat" style="height:9px"></div>
+          <div class="product-slat" style="height:4px;opacity:0.2"></div>
+          <div class="product-slat" style="height:9px"></div>
+          <div class="product-slat" style="height:4px;opacity:0.2"></div>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Комби Цуглуулга</div>
+        <div class="product-name">Комби хөшиг</div>
+        <div class="product-material">Материал: <span>Солонгос Даавуу</span></div>
+        <div class="product-price">₮ 225,000</div>
+        <div class="product-price-unit">м² тутамд</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div style="text-align:center; padding:4px 0 0">
+    <div style="font-family:'DM Sans',sans-serif; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted);">
+      LuxuryBlind · Тансаг Цонхны Хөшиг · Улаанбаатар
+    </div>
+  </div>
+
+</body>
+</html>
